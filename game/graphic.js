@@ -34,6 +34,9 @@ function init() {
 function Ground(color, size_x, size_y, nb_tile) {
     colors = Array(0xff0000, 0x00ff00, 0x0000ff, 0x000000);
     colorsWithoutBlack = Array(0xff0000, 0x00ff00, 0x0000ff);
+    directions = Array(Math.PI, 0, Math.PI / 2, 3 * Math.PI / 2);
+
+    maxEnemiesNb = 6;
 
     sizeOfTileX = size_x / nb_tile;
     minX = -(size_x / 2);
@@ -62,8 +65,9 @@ function Ground(color, size_x, size_y, nb_tile) {
                 scene.add(tmpGround);
 
                 // 1 chance out of 20 to have an enemy
-                if (Math.floor(Math.random() * 20) == 0) {
-                    enemy = new Enemy("enemy", 0xee82ee, new THREE.Vector2(x, y), 0);
+                if (Math.floor(Math.random() * 20) == 0 && enemies.length < maxEnemiesNb) {
+                    randomDirection = directions[Math.floor(Math.random() * directions.length)];
+                    enemy = new Enemy("enemy", 0xee82ee, new THREE.Vector2(x, y), randomDirection);
                     enemies.push(enemy);
                     scene.add(enemy.graphic);
                 }

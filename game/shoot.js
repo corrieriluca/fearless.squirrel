@@ -64,7 +64,23 @@ function bullet_collision() {
 }
 
 function player_collision() {
-    //collision between player and walls
+    // collision between player and enemy
+    for (var i = 0; i < enemies.length; i++) {
+        // Give a margin of 20 for the collision because enemy is 20 width and height
+        // and the player is length 20
+        if (Math.abs(player1.graphic.position.x - enemies[i].graphic.position.x) <= 20 &&
+            Math.abs(player1.graphic.position.y - enemies[i].graphic.position.y) <= 20) {
+
+            player1.life -= 1;
+            if (player1.life <= 0) {
+                player1.dead();
+                return;
+            }
+            player1.resetPosition();
+        }
+    }
+
+    // collision between player and walls
     var x = player1.graphic.position.x + WIDTH / 2;
     var y = player1.graphic.position.y + HEIGHT / 2;
 
@@ -76,7 +92,6 @@ function player_collision() {
         player1.graphic.position.y -= y;
     if (y > HEIGHT)
         player1.graphic.position.y -= y - HEIGHT;
-
 }
 
 function player_falling() {
@@ -103,5 +118,4 @@ function player_falling() {
             player1.dead();
         }
     }
-
 }
