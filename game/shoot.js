@@ -32,7 +32,7 @@ function shoot() {
 function collisions() {
     bullet_collision();
     player_collision();
-    // player_falling();
+    player_falling();
 }
 
 function bullet_collision() {
@@ -115,7 +115,12 @@ function player_falling() {
             && (x < mtileX)
             && (y > tileY)
             && (y < mtileY)) {
-            player1.dead();
+            player1.life -= 1;
+            if (player1.life <= 0) {
+                player1.dead();
+                return;
+            }
+            player1.resetPosition();
         }
     }
 }
