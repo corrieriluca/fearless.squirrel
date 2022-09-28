@@ -60,6 +60,13 @@ function Ground(color, size_x, size_y, nb_tile) {
                 tmpGround.position.x = x;
                 tmpGround.position.y = y;
                 scene.add(tmpGround);
+
+                // 1 chance out of 20 to have an enemy
+                if (Math.floor(Math.random() * 20) == 0) {
+                    enemy = new Enemy("enemy", 0xee82ee, new THREE.Vector2(x, y), 0);
+                    enemies.push(enemy);
+                    scene.add(enemy.graphic);
+                }
             }
             else
                 noGround.push([x, y]);

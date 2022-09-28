@@ -5,6 +5,7 @@
     <title>Fluffy Giggle</title>
     <style>
         body {
+            color: white;
             background: #000000;
         }
 
@@ -28,7 +29,7 @@
 <body>
     <div id="container"></div>
     <div id="player1">
-        <strong>Joueur 1</strong>
+        <strong>Joueur 1</strong><br />
         <span class="life">3</span> vies
     </div>
 </body>
@@ -38,6 +39,7 @@
 <script src="js/OrbitControls.js"></script>
 <script src="js/THREEx.KeyboardState.js"></script>
 <script src="game/player.js"></script>
+<script src="game/enemy.js"></script>
 <script src="game/graphic.js"></script>
 <script src="game/physic.js"></script>
 <script src="game/shoot.js"></script>
@@ -48,6 +50,7 @@
     var clock = new THREE.Clock();
     var player1,
         player2;
+    var enemies = [];
     var WIDTH = 600,
         HEIGHT = 400;
 
