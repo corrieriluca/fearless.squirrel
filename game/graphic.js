@@ -21,6 +21,7 @@ function init() {
 
     $container.append(renderer.domElement);
 
+    enemies = [];
     noGround = [];
     ground = new Ground(0xffffff, WIDTH, HEIGHT, 10);
 
@@ -64,8 +65,8 @@ function Ground(color, size_x, size_y, nb_tile) {
                 tmpGround.position.y = y;
                 scene.add(tmpGround);
 
-                // 1 chance out of 20 to have an enemy
-                if (Math.floor(Math.random() * 20) == 0 && enemies.length < maxEnemiesNb) {
+                // 1 chance out of 5 to have an enemy
+                if (Math.floor(Math.random() * 5) == 0 && enemies.length < maxEnemiesNb) {
                     randomDirection = directions[Math.floor(Math.random() * directions.length)];
                     enemy = new Enemy("enemy", 0xee82ee, new THREE.Vector2(x, y), randomDirection);
                     enemies.push(enemy);
