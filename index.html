@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <title>Fluffy Giggle</title>
     <style>
         body {
-            background: #000000; 
+            background: #000000;
         }
 
         #container {
-            margin : auto; 
+            margin: auto;
             border: 1px solid white;
             background: #000000;
         }
-        
+
         #player1 {
-                margin : auto; 
-                text-align: center;
+            margin: auto;
+            text-align: center;
         }
 
         .life {
-            color:white;
+            color: white;
         }
     </style>
 </head>
@@ -53,8 +54,7 @@
     init();
     animate();
 
-    function animate()
-    {
+    function animate() {
         requestAnimationFrame(animate);
         render();
         update();
@@ -63,16 +63,16 @@
         collisions();
     }
 
-    function render()
-    {
+    function render() {
         renderer.render(scene, camera);
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#container')
             .css('width', WIDTH)
             .css('height', HEIGHT)
-        ;
+            ;
     });
 </script>
+
 </html>
